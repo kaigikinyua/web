@@ -6,7 +6,7 @@ class dataTransfer:
         file=open("dir.txt","r")
         values=file.readlines()
         for v in values:
-            os.system("cp -r "+dir+" /var/www/html/WShare")
+            os.system("cp -r "+dir+" /var/www/html/Node")
 class Files:
     #method that list what is in the directory
     def dir(self,dir):
@@ -24,12 +24,12 @@ class Files:
         f_values=a.removenewLine(values)
         folder=a.removeSlash(dir)
         for v in f_values:
-            data+=["<div><video height='100px' width='100px' controls src='"+folder+"/"+v+"'/></div>"]
+            data+=["<div><video height='250px' width='300px' controls src='"+folder+"/"+v+"'/></div>"]
             #print data
-        file=open("/var/www/html/WShare/index.html","w")
+        file=open("/var/www/html/Node/index.html","w")
         file.write("<html>\n\t<head>\n\t\t<title></title></head>\n\t<body><table border='0'>")
         file.close()
-        file=open("/var/www/html/WShare/index.html","a");i=0;j=0
+        file=open("/var/www/html/Node/index.html","a");i=0;j=0
         for d in data:
             if j>0 and j<4:
                 file.write("\t<td>"+d+"<i>"+f_values[i]+"</i></td>\n")

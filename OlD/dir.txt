@@ -1,0 +1,11 @@
+(7) Electron js Tutorial - 9 - Accelerators and Global Shortcuts - YouTube.mp4
+(7) Electron js Tutorial - 8 - Context Menu - YouTube.mp4
+(7) Electron js Tutorial - 7 - Application Menu - YouTube.mp4
+(7) Electron js Tutorial - 6 - IPC - YouTube.mp4
+(7) Electron js Tutorial - 5 - Quote Widget - YouTube.mp4
+(7) Electron js Tutorial - 4 - BrowserWindow - YouTube.mp4
+(7) Electron js Tutorial - 3 - Main and Renderer Process - YouTube.mp4
+(7) Electron js Tutorial - 2 - Hello World - YouTube.mkv
+(7) Electron js Tutorial - 12 - CRUD File - YouTube.mp4
+(7) Electron js Tutorial - 11 - Tray Module - YouTube.mp4
+(7) Electron js Tutorial - 10 - Shell Module - YouTube.mp4

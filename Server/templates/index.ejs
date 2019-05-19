@@ -9,14 +9,14 @@
 		<p class="outcast">S</p>hare
 		<div class="items">
 			<ul class="horizontalList">
-				<li class="active">Videos</li>
-				<li>Documents</li>
-				<li>Pictures</li>
+				<li class="active" onclick="hideContent('documents','pictures','video')">Videos</li>
+				<li onclick="hideContent('video','pictures','documents')" >Documents</li>
+				<li onclick="hideContent('documents','video','pictures')">Pictures</li>
 			</ul>
 		</div>
 	</div>
 	<div style="height:150px;"></div>
-	<div class="content">
+	<div class="content" id="video">
 		<% for(var i=0;i < videos.length;i++){%>
 			<div class="module">
 				<video src="/video/<%=videos[i].name%>"controls></video>
@@ -26,5 +26,25 @@
 			</div>
 		<% } %>
 	</div>
+	<div class="content hidden" id="documents">
+		<% for(var i=0;i < documents.length;i++){%>
+			<div class="module">
+				<div class="videoDetails">
+					<%=documents[i].name %>	
+				</div>
+			</div>
+		<% } %>
+	</div>
+	<div class="content hidden" id="pictures" onclick="hideContent('videos','documents')">
+		<% for(var i=0;i < pictures.length;i++){%>
+			<div class="module">
+				<img src="/pictures/<%=pictures[i].name%>"/>
+				<div class="videoDetails">
+					<%=pictures[i].name %>	
+				</div>
+			</div>
+		<% } %>
+	</div>
+	<script src='static/dynamic.js'></script>
 </body>
 </html>

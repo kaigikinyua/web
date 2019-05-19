@@ -69,9 +69,25 @@ div.content{
 	left:50%;
 	background: white;
 	width: 70%;
-	height:100vh;
 	transform: translateX(-50%);
 }
+video{
+	height:200px;
+	width:275px;
+	margin-right:10px;
+}
 div.module{
-	
+	margin-bottom:20px;
+	position: relative;
+	display: flex;
+	padding:10px;
+}
+div.videoDetails{
+	padding:10px;
+	color:white;
+	position: relative;
+	height:190px;
+	width:265px;
+	background:#3489DB;
+	border-radius: 5px;
 }

@@ -76,6 +76,10 @@ video{
 	width:200px;
 	margin-right:10px;
 }
+img{
+	height:175px;
+	width:200px;
+}
 video:hover div.videoDetails{
 	display: block;
 

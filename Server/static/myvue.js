@@ -5,25 +5,35 @@ var nav=new Vue({
 		videos:false,
 		image:false
 	},
-	methods:{},
-	computed:{}
+	methods:{}
 });
-var module=new Vue({
+var video=new Vue({
 	el:'#video',
+	data:{},
+	methods:{
+		video:function(){
+			console.log("videos")
+			return nav.videos
+		}
+	}
+});
+var documents=new Vue({
+	el:'#documents',
 	data:{},
 	methods:{
 		documents:function(){
 			console.log("documents")
 			return nav.documents
-		},
-		video:function(){
-			console.log("videos")
-			return nav.videos
-		},
+		}
+	}
+})
+var image=new Vue({
+	el:'#pictures',
+	data:{},
+	methods:{
 		image:function(){
 			console.log("image")
 			return nav.image
 		}
-	},
-	computed:{}
-});
+	}
+})

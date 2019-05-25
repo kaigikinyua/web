@@ -1,4 +1,5 @@
 import json
+import shutil
 import os
 from Errors import *
 class Files:
@@ -71,3 +72,13 @@ class Files:
 			print("\n")
 		fileElement="others"
 		return fileElement
+	def getFilename(self,filepath):
+		file=filepath.split('/')
+		filename=file[len(file)-1]
+		return filename
+	def copyFile(self,origin,destination):
+		try:
+			shutil.copy(origin,destination)
+		except:
+			e=Errors()
+			e.consoleError("Failed to copy file "+origin+" to "+destination)

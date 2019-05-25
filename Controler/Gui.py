@@ -10,10 +10,11 @@ from Files import *
 class Gui():
 	def __init__(self):
 		self.server=False
+		self.buttons={}
 		self.root=Tk();
 		self.root.title("Share Server!!")
-		self.runserverBtn=Button(self.root,text="Runserver",command=self.startThread)
-		self.runserverBtn.pack()
+		self.buttons["runserver"]=Button(self.root,text="Runserver",command=self.startThread)
+		self.buttons["runserver"].pack()
 		stopserverBtn=Button(self.root,text="Stop Server",command=self.stopserver)
 		stopserverBtn.pack()
 		addFile=Button(self.root,text="Share File",command=self.addFile)
@@ -22,13 +23,16 @@ class Gui():
 
 	def runserver(self):
 		#change directoy to Server
-		os.chdir('../Server')
-		print("Server procees {}".format(os.getpid()))
-		self.server=os.getpid()
-		serverCommand="node mainserver.js"
-		error=os.system(serverCommand)
-		if(error):
-			print("failed")
+		if self.server==False:
+			self.server=True
+			print("Server procees {}".format(os.getpid()))
+			self.buttons["runserver"].configure(bg="green",text="Server Running")
+			self.server=os.getpid()
+			serverCommand="node Server/mainserver.js"
+			error=os.system(serverCommand)
+			if(error):
+				print("failed")
+
 	def startThread(self):
 		self.t=threading.Thread(target=self.runserver,name="server",args=())
 		self.t.start()
@@ -39,5 +43,7 @@ class Gui():
 		newfilepath=filedialog.askopenfilename()
 		F=Files()
 		element=F.fileExtension(newfilepath);
-		F.appendJson(element,"name",newfilepath,'../Server/AppData/shared.json')
+		filename=F.getFilename(newfilepath)
+		F.copyFile(newfilepath,'./Server/Shared/'+element)
+		F.appendJson(element,"name",filename,'./AppData/shared.json')
 g=Gui()

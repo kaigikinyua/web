@@ -1,0 +1,104 @@
+body{
+	padding:0px;
+	margin:0px;
+	background-color: whitesmoke;
+}
+div.topBarner{
+	position: fixed;
+	top:0px;
+	width: 100%;
+	background: #3489DB;
+	text-align: center;
+	color:white;
+	z-index: 3;
+}
+ul.horizontalList{
+	list-style: none;
+	display: inline-block;
+	padding:0px;
+}
+ul.horizontalList li{
+	display: inline-block;
+	padding:10px;
+	margin-left: 30px;
+	border-radius: 5px;
+	border:1px solid white;
+	cursor: pointer;
+}
+ul.horizontalList li.active{
+	background: white;
+	color: #3489DB;
+}
+ul.horizontalList li:hover{
+	transition: 0.3s;
+	border-top:none;
+	border-left:none;
+	border-right:none;
+	background: white;
+	color:#EB4D4B;
+	border-bottom: 2px solid #EB4D4B;
+}
+p.outcast{
+	padding: 0px;
+	color:#EB4D4B;
+	display: inline-block;
+	text-transform: uppercase;
+	animation-delay: 0s;
+	animation: 2s rotateText;
+	font-size: 30px;
+	margin: 0px;
+}
+h3{
+	display: inline-block;
+	padding: 0px;
+}
+@keyframes rotateText{
+	0%{
+		transform: rotate(0deg);
+	}
+	50%{
+		transform: rotate(720deg) scale(1.05);
+	}
+	100%{
+		transform: rotate(0deg);
+	}
+}
+div.content{
+	position: relative;
+	left:50%;
+	background: white;
+	padding: 20px;
+	transform: translateX(-50%);
+	display: flex;
+}
+video{
+	height:175px;
+	width:200px;
+	margin-right:10px;
+}
+img{
+	height:175px;
+	width:200px;
+}
+video:hover div.videoDetails{
+	display: block;
+
+}
+div.module{
+	margin-bottom:20px;
+	position: relative;
+	padding:10px;
+	color:black;
+}
+div.videoDetails{
+	display: none;
+	overflow: scroll;
+	padding:10px;
+	color:black;
+	position: relative;
+	background:#3489DB;
+	border-radius: 5px;
+}
+div.hidden{
+	visibility: none;
+}

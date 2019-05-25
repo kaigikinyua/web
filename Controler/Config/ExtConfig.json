@@ -3,13 +3,18 @@
 		{"ext":"mp3"},
 		{"ext":"mp4"},
 		{"ext":"mkv"},
-		{"ext":"mpeg"}
+		{"ext":"mpeg"}		
 	],
 	"documents":[
 		{"ext":"txt"},
 		{"ext":"pdf"},
 		{"ext":"docx"},
-		{"ext":"odt"}
+		{"ext":"odt"},
+		{"ext":"py"},
+		{"ext":"php"},
+		{"ext":"js"},
+		{"ext":"html"},
+		{"ext":"css"}
 	],
 	"pictures":[
 		{"ext":"jpeg"},

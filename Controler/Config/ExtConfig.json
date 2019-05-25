@@ -1,0 +1,20 @@
+{
+	"videos":[
+		{"ext":"mp3"},
+		{"ext":"mp4"},
+		{"ext":"mkv"},
+		{"ext":"mpeg"}
+	],
+	"documents":[
+		{"ext":"txt"},
+		{"ext":"pdf"},
+		{"ext":"docx"},
+		{"ext":"odt"}
+	],
+	"pictures":[
+		{"ext":"jpeg"},
+		{"ext":"jpg"},
+		{"ext":"png"}
+	],
+	"others":[]
+}

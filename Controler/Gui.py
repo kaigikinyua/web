@@ -5,6 +5,8 @@ import subprocess
 from subprocess import *
 import  signal
 import threading
+
+from Files import *
 class Gui():
 	def __init__(self):
 		self.server=False
@@ -34,6 +36,8 @@ class Gui():
 		print(self.server)
 		os.kill(self.server,signal.SIGKILL)
 	def addFile(self):
-		file=file=filedialog.askopenfilename()
-		
+		newfilepath=filedialog.askopenfilename()
+		F=Files()
+		element=F.fileExtension(newfilepath);
+		F.appendJson(element,"name",newfilepath,'../Server/AppData/shared.json')
 g=Gui()

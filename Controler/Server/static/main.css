@@ -84,11 +84,15 @@ video:hover div.videoDetails{
 	display: block;
 
 }
+.center{
+	text-align: center;
+}
 div.module{
 	margin-bottom:20px;
 	position: relative;
 	padding:10px;
 	color:black;
+	border:1px solid gray;
 }
 div.videoDetails{
 	display: none;

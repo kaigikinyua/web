@@ -32,11 +32,13 @@
 	</div>
 	<div v-show="documents()" id="documents">
 		<% for(var i=0;i < documents.length;i++){%>
-				<%=documents[i].name %>
+			<div class="module center">
 				<a href="/documents/view/<%=documents[i].name%>">
-					<button>FullScrean</button>
+					<button>View</button>
 				</a>
+				<%=documents[i].name %>
 				<embed src="documents/view/<%=documents[i].name%>" height="100%" width="50%"/>
+			</div>
 		<% } %>
 	</div>
 	<div v-show="image()" class="content" id="pictures">

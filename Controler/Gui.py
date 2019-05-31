@@ -32,15 +32,19 @@ class Gui():
 		stopserverBtn.pack()
 		addFile.pack()
 		#ListBox
-		self.sharedFiles=Listbox(detailsFrame,width=30)
+		self.sharedFiles=Listbox(detailsFrame,width=50)
 		#get shared Items and add them
 		F=Files()
 		items=F.readJson('./AppData/shared.json')
-		j=0
-		for item in items:
-			self.sharedFiles.insert(j,item)
-			j+=1
+		j=0;
+		array=["videos","documents","pictures","others"]
+		for item in array:
+			for file in items[item]:								
+				self.sharedFiles.insert(j,file["name"])
+				j+=1
 		self.sharedFiles.pack()
+
+
 		#packing frames
 		logoFrame.pack(side=TOP)
 		controlFrame.pack(side=LEFT)

@@ -42,7 +42,19 @@ class Files:
 				e=Errors()
 				e.consoleError("Failed to append to  "+filename)
 				return False
-
+	
+	def deleteJsonElement(self,fieldname,parameter,JsonData):
+		newJson=[]
+		if len(JsonData)!=0:
+			for item in JsonData:
+				if item[fieldname]!=parameter:
+					newJson+=[{fieldname:item[fieldname]}]
+			return newJson
+		else:
+			e=Errors()
+			e.consoleError("The JsonData is null")
+			return False
+	#Files to be Shared Utility Functions
 	def ifFileExists(self,filename):
 		file="./"+filename
 		if os.path.isfile(file)==False:
@@ -76,9 +88,16 @@ class Files:
 		file=filepath.split('/')
 		filename=file[len(file)-1]
 		return filename
+	#this needs to be a thread
 	def copyFile(self,origin,destination):
 		try:
 			shutil.copy(origin,destination)
 		except:
 			e=Errors()
 			e.consoleError("Failed to copy file "+origin+" to "+destination)
+	#def deleteFile(self)
+#EOF!!!------
+#myJsonData=[{"name":"Kinyua"},{"name":"Antony"},{"name":"Kaigi"}]
+#F=Files()
+#x=F.deleteJsonElement("name","Antony",myJsonData)
+#print(x)

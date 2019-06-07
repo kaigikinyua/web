@@ -95,9 +95,10 @@ class Files:
 		except:
 			e=Errors()
 			e.consoleError("Failed to copy file "+origin+" to "+destination)
-	#def deleteFile(self)
-#EOF!!!------
-#myJsonData=[{"name":"Kinyua"},{"name":"Antony"},{"name":"Kaigi"}]
-#F=Files()
-#x=F.deleteJsonElement("name","Antony",myJsonData)
-#print(x)
+	#delete a file
+	def deleteFile(self,filepath):
+		try:
+			os.remove(filepath)
+		except:
+			e=Errors()
+			e.consoleError("Error in deleting file"+filepath)

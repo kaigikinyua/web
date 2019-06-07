@@ -3,7 +3,8 @@ var nav=new Vue({
 	data:{
 		documents:false,
 		videos:true,
-		image:false
+		image:false,
+		others:false
 	},
 	methods:{}
 });
@@ -32,6 +33,15 @@ var image=new Vue({
 	methods:{
 		image:function(){
 			return nav.image
+		}
+	}
+})
+var others=new Vue({
+	el:'#others',
+	data:{},
+	methods:{
+		others:function(){
+			return nav.others
 		}
 	}
 })

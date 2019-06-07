@@ -7,6 +7,7 @@ app.use('/video',express.static(path.join(__dirname,'Shared/videos')));
 app.use('/static',express.static(path.join(__dirname,'static')));
 app.use('/documents',express.static(path.join(__dirname,'Shared/documents')))
 app.use('/pictures',express.static(path.join(__dirname,'Shared/pictures')))
+app.use('/others',express.static(path.join(__dirname,'Shared/others')))
 app.get('/',function(req,res){
 	var filename=fs.readFileSync('./AppData/shared.json',function(err,data){
 		if(err){
@@ -15,10 +16,7 @@ app.get('/',function(req,res){
 		return data.toString();
 	});
 	var files=JSON.parse(filename);
-	console.log(files["videos"])
-	console.log(files["documents"])
-	console.log(files["pictures"])
-	res.render(path.join(__dirname,'templates/index.ejs'),{videos:files["videos"],pictures:files["pictures"],documents:files["documents"]});
+	res.render(path.join(__dirname,'templates/index.ejs'),{videos:files["videos"],pictures:files["pictures"],documents:files["documents"],others:files["others"]});
 });
 app.get('/documents/view/:filename',function(req,res){
 	res.writeHead(200,{'Content-Type':'text/plain'});

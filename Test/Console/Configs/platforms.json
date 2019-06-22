@@ -1,0 +1,7 @@
+{   
+    "windows":{
+        "partition1":[{"one":"C","two":"D","three":"E"}],
+        "paths":[{"C":"C:/Users"}]
+    },
+    "linux":"/run/media"
+}

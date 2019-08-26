@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title> Connect to DB</title>
+    </head>
+    <body>
+        <div>
+        <video src="/db/<%=paths[1].path%>" height="100px" controls/>
+        </div>
+        <video src="/db/<%=paths[2].path%>" height="100px" controls/>
+        <% for(var i=0;i < paths.length;i++){%>
+            <div>
+            <h1><%=paths[i].path %></h1>
+            <h2>Hello World</h2>
+            </div>
+        <% } %>
+    </body>
+</html>

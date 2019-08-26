@@ -1,3 +1,4 @@
+from DB import *
 from tkinter import *
 from tkinter import filedialog
 import os
@@ -74,7 +75,9 @@ class Gui():
 		F=Files()
 		element=F.fileExtension(newfilepath);
 		filename=F.getFilename(newfilepath)
-		F.copyFile(newfilepath,'./Server/Shared/'+element)
-		F.appendJson(element,"name",filename,'./AppData/shared.json')
+		d=DB()
+		d.addFile(newfilepath,filename,element)
+		#F.copyFile(newfilepath,'./Server/Shared/'+element)
+		#F.appendJson(element,"name",filename,'./AppData/shared.json')
 
 g=Gui()

@@ -14,9 +14,15 @@ class DB:
         print(sql)
         #except:
         #    m=Messages('Error','Error While Sharing File')
+    def showAllFiles(self):
+        sql="SELECT * FROM sharedfiles;"
+        c=self.db.cursor()
+        c.execute(sql)
+        data=c.fetchall()
+        return data
+
     def dbAdmin(self,sql):
         #sql="CREATE TABLE sharedfiles (path varchar(50) not null,filename varchar(50) not null,filetype varchar(50));"
         c=self.db.cursor()
         c.execute(sql)
         self.db.commit()
-d=DB()

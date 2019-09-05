@@ -8,6 +8,7 @@ import  signal
 import threading
 #local files import
 from Files import *
+from network import *
 class Gui():
 	def __init__(self):
 		self.server=False
@@ -20,6 +21,10 @@ class Gui():
 		detailsFrame=Frame(self.root)
 		
 		#pictures
+		n=Network()
+		ip=n.getIp()
+		IP=Label(logoFrame,text=ip)
+		IP.pack()
 		logo=PhotoImage(file='./CImages/logo.png')
 		logoLabel=Label(logoFrame,image=logo)
 		logoLabel.pack()
@@ -35,13 +40,13 @@ class Gui():
 		#ListBox
 		self.sharedFiles=Listbox(detailsFrame,width=50)
 		#get shared Items and add them
-		F=Files()
-		items=F.readJson('./AppData/shared.json')
+		d=DB()
+		items=d.showAllFiles()
 		j=0;
 		array=["videos","documents","pictures","others"]
 		for item in array:
-			for file in items[item]:								
-				self.sharedFiles.insert(j,file["name"])
+			for file in items:								
+				self.sharedFiles.insert(j,file[1])
 				j+=1
 		self.sharedFiles.pack()
 
@@ -50,6 +55,7 @@ class Gui():
 		logoFrame.pack(side=TOP)
 		controlFrame.pack(side=LEFT)
 		detailsFrame.pack(side=RIGHT)
+		self.root.resizable(False,False)
 		self.root.mainloop()
 
 	def runserver(self):
@@ -59,7 +65,7 @@ class Gui():
 			print("Server procees {}".format(os.getpid()))
 			self.buttons["runserver"].configure(bg="green",text="Server Running")
 			self.server=os.getpid()
-			serverCommand="node Server/mainserver.js"
+			serverCommand="nodemon Server/mainserver.js"
 			error=os.system(serverCommand)
 			if(error):
 				print("failed")
@@ -72,11 +78,14 @@ class Gui():
 		os.kill(self.server,signal.SIGKILL)
 	def addFile(self):
 		newfilepath=filedialog.askopenfilename()
-		F=Files()
-		element=F.fileExtension(newfilepath);
-		filename=F.getFilename(newfilepath)
-		d=DB()
-		d.addFile(newfilepath,filename,element)
+		if(len(newfilepath)>0 and newfilepath!=" "):
+			F=Files()
+			element=F.fileExtension(newfilepath);
+			filename=F.getFilename(newfilepath)
+			d=DB()
+			d.addFile(newfilepath,filename,element)
+		else:
+			print("Empty")
 		#F.copyFile(newfilepath,'./Server/Shared/'+element)
 		#F.appendJson(element,"name",filename,'./AppData/shared.json')
 

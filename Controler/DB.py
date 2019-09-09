@@ -26,3 +26,9 @@ class DB:
         c=self.db.cursor()
         c.execute(sql)
         self.db.commit()
+
+    def hideFile(self,filename):
+        sql="DELETE FROM sharedfiles where filename='"+filename+"';"
+        c=self.db.cursor()
+        c.execute(sql)
+        self.db.commit()

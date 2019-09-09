@@ -88,17 +88,12 @@ class Files:
 		file=filepath.split('/')
 		filename=file[len(file)-1]
 		return filename
-	#this needs to be a thread
-	def copyFile(self,origin,destination):
-		try:
-			shutil.copy(origin,destination)
-		except:
-			e=Errors()
-			e.consoleError("Failed to copy file "+origin+" to "+destination)
-	#delete a file
-	def deleteFile(self,filepath):
-		try:
-			os.remove(filepath)
-		except:
-			e=Errors()
-			e.consoleError("Error in deleting file"+filepath)
+
+	def filePathIsFile(self,filepath):
+		if os.path.isfile(filepath):
+			return True
+		else:
+			if os.path.isdir(filepath):
+				return "dir"
+			else:
+				return False

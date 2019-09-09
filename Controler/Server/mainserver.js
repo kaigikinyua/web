@@ -12,22 +12,51 @@ app.use('/documents',express.static(path.join(__dirname,'Shared/documents')))
 app.use('/pictures',express.static(path.join(__dirname,'Shared/pictures')))
 app.use('/others',express.static(path.join(__dirname,'Shared/others')))
 app.use('/db',express.static('/'))
+
+//index
 app.get('/',function(req,res){
-	var filename=fs.readFileSync('./AppData/shared.json',function(err,data){
+	var files_v=db.all("SELECT * FROM sharedfiles where filetype=?",['videos'],function(err,rows){
 		if(err){
-			console.log('err')
+			console.log(err)
+			console.log("Error While reading db for ")
+			res.render(path.join(__dirname,'templates/db.ejs'),{error:"Error"})
 		}
-		return data.toString();
+		else{
+			var videos=rows
+			var files_p=db.all("SELECT * FROM sharedfiles where filetype=?",['pictures'],function(err,rows){
+				if(err){
+					console.log(err)
+					console.log("Error while reading db for pictures")
+				}
+				else{
+					var pictures=rows
+					var files_d=db.all("SELECT * FROM sharedfiles where filetype=?",['documents'],function(err,rows){
+						if(err){
+							console.log(err)
+							console.log("Error while reading db for documents")
+						}
+						else{
+							var documents=rows
+							console.log(videos)
+							console.log(pictures)
+							console.log(documents)
+							res.render(path.join(__dirname,'templates/db.ejs'),{videos:videos,pictures:pictures,documents:documents})
+						}
+					});
+				}
+			});
+		}
 	});
-	var files=JSON.parse(filename);
-	res.render(path.join(__dirname,'templates/index.ejs'),{videos:files["videos"],pictures:files["pictures"],documents:files["documents"],others:files["others"]});
 });
+
+//text documents
 app.get('/documents/view/:filename',function(req,res){
 	res.writeHead(200,{'Content-Type':'text/plain'});
 	filedata=fs.createReadStream(path.join(__dirname,'Shared/documents/'+req.params.filename),'utf8');
 	filedata.pipe(res)
 });
 
+//test
 app.get('/database',function(req,res){
 	var files=db.all("SELECT * FROM sharedfiles",[],function(err,rows){
 		if(err){

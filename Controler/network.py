@@ -5,4 +5,5 @@ class Network:
 		print(ip)
 		if(ip=='127.0.0.1'):
 			print("You are offline")
-		return ip
+		Ip=ip+" : 4000"
+		return Ip

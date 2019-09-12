@@ -2,6 +2,7 @@ import json
 import shutil
 import os
 from Errors import *
+from DB import *
 class Files:
 	#read the json files
 	def readJson(self,filename):
@@ -67,23 +68,37 @@ class Files:
 				e.consoleError("Failed to create "+filename)
 				return False
 	def fileExtension(self,filename):
-		ext=filename.split('.')
-		print(ext)
-		F=Files()
-		d=F.readJson('./Config/ExtConfig.json')
-		array=["videos","documents","pictures","others"]
-		for element in array:
-			i=0;print(element)
-			while(i<(len(d[element])-1)):
-				print(d[element][i]["ext"])
-				if(ext[len(ext)-1]==d[element][i]["ext"]):
-					print(filename +" is belongs to "+element)
-					fileElement=element
-					return element
-				i+=1
-			print("\n")
-		fileElement="others"
-		return fileElement
+		if os.path.isdir(filename):
+			print("File is directory")
+			return "directory"
+		else:	
+			ext=filename.split('.')
+			print(ext)
+			F=Files()
+			d=F.readJson('./Config/ExtConfig.json')
+			array=["videos","documents","pictures","others"]
+			for element in array:
+				i=0;print(element)
+				while(i<(len(d[element])-1)):
+					print(d[element][i]["ext"])
+					if(ext[len(ext)-1]==d[element][i]["ext"]):
+						print(filename +" is belongs to "+element)
+						fileElement=element
+						return element
+					i+=1
+				print("\n")
+			fileElement="others"
+			return fileElement
+	def addDirectory(self,directory):
+		files=os.listdir(directory)
+		for file in files:
+			if os.path.isfile(directory+"/"+file):
+				filename=self.getFilename(directory+"/"+file)
+				extension=self.fileExtension(directory+"/"+file)
+				d=DB()
+				d.addFile(directory+"/"+file,filename,extension)
+				s=self.sharedFiles.size()
+				self.sharedFiles.insert(s,filename)
 	def getFilename(self,filepath):
 		file=filepath.split('/')
 		filename=file[len(file)-1]

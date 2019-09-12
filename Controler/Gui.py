@@ -82,11 +82,14 @@ class Gui():
 		if(len(newfilepath)>0 and newfilepath!=" "):
 			F=Files()
 			element=F.fileExtension(newfilepath);
-			filename=F.getFilename(newfilepath)
-			d=DB()
-			d.addFile(newfilepath,filename,element)
-			s=self.sharedFiles.size()
-			self.sharedFiles.insert(s,filename)
+			if element=="directory":
+				print("Adding Directory")
+			else:	
+				filename=F.getFilename(newfilepath)
+				d=DB()
+				d.addFile(newfilepath,filename,element)
+				s=self.sharedFiles.size()
+				self.sharedFiles.insert(s,filename)
 		else:
 			print("Empty")
 		#F.copyFile(newfilepath,'./Server/Shared/'+element)

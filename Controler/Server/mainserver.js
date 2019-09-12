@@ -6,11 +6,7 @@ const app=express();
 const sqlite3=require('sqlite3').verbose();
 const db=new sqlite3.Database(path.join(__dirname,'../AppData/share.db'));
 app.set('template engine','ejs');
-app.use('/video',express.static(path.join(__dirname,'Shared/videos')));
 app.use('/static',express.static(path.join(__dirname,'static')));
-app.use('/documents',express.static(path.join(__dirname,'Shared/documents')))
-app.use('/pictures',express.static(path.join(__dirname,'Shared/pictures')))
-app.use('/others',express.static(path.join(__dirname,'Shared/others')))
 app.use('/db',express.static('/'))
 
 //index

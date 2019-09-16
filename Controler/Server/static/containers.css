@@ -63,7 +63,6 @@ div.item {
 
 div.itemname {
   position: relative;
-  margin-top: 40px;
   color: #E3F2FD;
 }
 
@@ -77,8 +76,19 @@ div.documents {
   display: none;
 }
 
+img.fileIcon {
+  height: 40px;
+  width: 40px;
+}
+
 div.pictures {
   display: none;
+}
+
+div.documents div.item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 @media only screen and (max-width: 600px) {

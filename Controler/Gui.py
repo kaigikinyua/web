@@ -19,7 +19,6 @@ class Gui():
 		logoFrame=Frame(self.root,width=100)
 		controlFrame=Frame(self.root)
 		self.detailsFrame=Frame(self.root)
-		self.root.attributes('-alpha',0.7)
 		
 		#pictures
 		n=Network()

@@ -1,9 +1,9 @@
 import sqlite3
-from messages import *
+from Messages import *
 class DB:
     def __init__(self):
         try:
-            self.db=sqlite3.connect('AppData/share.db')
+            self.db=sqlite3.connect('../AppData/DB/share.db')
         except:
             m=Messages('error','Error While Connecting To Database')
     def addFile(self,path,filename,videotype):

@@ -1,10 +1,10 @@
 import json
 import shutil
 import os
-from Errors import *
+from Messages import *
 from DB import *
 class Files:
-	#read the json files
+	#Files to be Shared Utility Functions
 	def readJson(self,filename):
 		try:
 			with open(filename,'r') as file:
@@ -12,50 +12,9 @@ class Files:
 				file.close()
 				return data
 		except:
-			e=Errors()
-			e.consoleError("Failed to read "+filename)
+			Messages('error','Could Not read '+filename)
 			return False
 
-	def writeToJson(self,filename,data):
-		try:
-			with open(filename,'w') as file:
-				json.dump(data,file)
-				file.close()
-				return True
-		except:
-			e=Errors()
-			e.consoleError("Failed to write to  "+filename)
-
-	def appendJson(self,element,index,newData,filename):
-		F=Files()
-		data=F.readJson(filename)
-		if data==False:
-			e=Errors()
-			e.consoleError("Failed to read "+filename)
-			return False
-		else:
-			data[element]+=[{index:newData}]
-			try:
-				with open(filename,'w') as file:
-					json.dump(data,file)
-					return True
-			except:
-				e=Errors()
-				e.consoleError("Failed to append to  "+filename)
-				return False
-	
-	def deleteJsonElement(self,fieldname,parameter,JsonData):
-		newJson=[]
-		if len(JsonData)!=0:
-			for item in JsonData:
-				if item[fieldname]!=parameter:
-					newJson+=[{fieldname:item[fieldname]}]
-			return newJson
-		else:
-			e=Errors()
-			e.consoleError("The JsonData is null")
-			return False
-	#Files to be Shared Utility Functions
 	def ifFileExists(self,filename):
 		file="./"+filename
 		if os.path.isfile(file)==False:
@@ -64,8 +23,7 @@ class Files:
 				f.close()
 				return True
 			except:
-				e=Errors()
-				e.consoleError("Failed to create "+filename)
+				Messages('error','Error While Opening File'+filename)
 				return False
 	def fileExtension(self,filename):
 		if os.path.isdir(filename):
@@ -75,7 +33,7 @@ class Files:
 			ext=filename.split('.')
 			print(ext)
 			F=Files()
-			d=F.readJson('./Config/ExtConfig.json')
+			d=F.readJson('../AppData/Config/ExtConfig.json')
 			array=["videos","documents","pictures","others"]
 			for element in array:
 				i=0;print(element)
@@ -97,8 +55,6 @@ class Files:
 				extension=self.fileExtension(directory+"/"+file)
 				d=DB()
 				d.addFile(directory+"/"+file,filename,extension)
-				s=self.sharedFiles.size()
-				self.sharedFiles.insert(s,filename)
 	def getFilename(self,filepath):
 		file=filepath.split('/')
 		filename=file[len(file)-1]

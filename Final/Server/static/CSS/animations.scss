@@ -1,0 +1,21 @@
+.open{
+ animation:0s open 1s;
+}
+@keyframes open{
+    from{
+        width:0px;
+    }to{
+        width:100%;
+    }
+}
+.close{
+    animation:0s close 1s;
+}
+@keyframes close{
+    from{
+        width:100px;
+    }
+    to{
+        width:0px;
+    }
+}

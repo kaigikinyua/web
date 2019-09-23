@@ -51,7 +51,9 @@ class Gui:
         if self.server==False:
             self.server=True
             print("Server procees {}".format(os.getpid()))
-            serverCommand="nodemon ../Server/mainserver.js"
+    #set it to the executeable path when packaging
+            os.chdir('../Server')
+            serverCommand="nodemon index.js"
             error=os.system(serverCommand)
             if(error):
             	print("failed")

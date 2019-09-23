@@ -34,7 +34,7 @@ class Files:
 			print(ext)
 			F=Files()
 			d=F.readJson('../AppData/Config/ExtConfig.json')
-			array=["videos","documents","pictures","others"]
+			array=["videos","audio","documents","text","pictures","compressed","others"]
 			for element in array:
 				i=0;print(element)
 				while(i<(len(d[element])-1)):

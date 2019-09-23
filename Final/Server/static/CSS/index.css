@@ -22,6 +22,12 @@ div.topbarner {
   -webkit-box-shadow: 5px 5px 5px 10px #2F3542;
           box-shadow: 5px 5px 5px 10px #2F3542;
   z-index: 10;
+  font-family: cursive;
+}
+
+div.topbarner i {
+  font-family: 'Times New Roman', Times, serif;
+  color: #2F3542;
 }
 
 a {
@@ -83,7 +89,7 @@ div.module {
   border-radius: 10px;
   max-width: 400px;
   min-height: 150px;
-  margin: 20px 10px;
+  margin: 20px 0px;
   overflow: hidden;
   -webkit-transition: 0.7s;
   transition: 0.7s;

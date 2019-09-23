@@ -1,5 +1,7 @@
 const db=require('./db.js')
 const fs=require('fs')
+const bodyParser=require('body-parser')
+var urlencodedParser=bodyParser.urlencoded({extended:false})
 module.exports = function(app){
     app.get('/',(req,res)=>{
         res.render('index') 
@@ -35,11 +37,16 @@ module.exports = function(app){
         })
     })
 
-    app.get('/readFile',(req,res)=>{
-        filepath=req.query
+    app.post('/readFile',urlencodedParser,(req,res)=>{
+
+        filepath=req.body.filepath
         res.writeHead(200,{'Content-Type':'text/plain'});
 	    filedata=fs.createReadStream(filepath,'utf8');
         filedata.pipe(res)
+    })
+    app.post('/readPdf',urlencodedParser,(req,res)=>{
+        filepath=req.body.filepath
+        res.sendFile(filepath)
     })
     app.get('/upload',(req,res)=>{
         res.render('upload')

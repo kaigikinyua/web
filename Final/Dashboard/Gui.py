@@ -3,13 +3,16 @@ from tkinter import filedialog
 from Files import *
 from DB import *
 from Messages import *
+from network import *
 import os
 class Gui:
     def __init__(self):
         self.server=False
 
         self.root=Tk()
-        self.root.title("WebShare")
+        i=Network()
+        ip=i.getIp()
+        self.root.title("WebShare running on "+ip)
         
         self.utilityPanel=Frame(self.root)
         self.createLabel(self.utilityPanel,'Hello There!!')

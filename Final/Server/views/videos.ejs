@@ -10,15 +10,7 @@
 </head>
 <body>
     <div class="sidebarner"></div>
-    <div class="topbarner">
-        <ul class="topnav">
-            <a href="/videos"><li><img class="small" src="/static/Icons/video.png"></li></a>
-            <a href="/audio"><li><img class="small" src="/static/Icons/audio.png"></li></a>
-            <a href="/documents"><li><img class="small" src="/static/Icons/documents.png"></li></a>
-            <a href="/text"><li><img class="small" src="/static/Icons/text.png"></li></a>
-            <a href="/compressed"><li><img class="small" src="/static/Icons/pen.png"></li></a>
-        </ul>
-    </div>
+    <% include templates/header.ejs %>
     <div class="content" style="color:white;">
         <% for(var i=0;i < videos.length;i++){%>
             <div class="container">
@@ -27,7 +19,7 @@
                 </div>
                 <div class="links">
                     <center><span><%= videos[i].filename %></span></center><br/>
-                    <center><a href="#"><img class="small" src="/static/Icons/download.png"></a></center>
+                    <center><a href="/media/<%=videos[i].path%>"><img class="small" src="/static/Icons/download.png"></a></center>
                 </div>
             </div>
         <% } %>

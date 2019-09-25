@@ -37,7 +37,7 @@ class Files:
 			array=["videos","audio","documents","text","pictures","compressed","others"]
 			for element in array:
 				i=0;print(element)
-				while(i<(len(d[element])-1)):
+				while(i<(len(d[element]))):
 					print(d[element][i]["ext"])
 					if(ext[len(ext)-1]==d[element][i]["ext"]):
 						print(filename +" is belongs to "+element)

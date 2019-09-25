@@ -32,6 +32,34 @@ div.container:hover div.links{
     transform:translateY(0%);
     opacity: 1;
 }
+/*applies to the documents and texts views*/
+div.file{
+    padding:10px;
+    background:white;
+    color:rgba(0,0,0,0.9);
+    margin:5px 10px;
+}
+div.file img.pic{
+    position: relative;
+    height:100px;
+    width:100px;
+}
+div.fileActions{
+    display:grid;
+    grid-template-columns:1fr 2fr;
+}
+.btn{
+    position: relative;
+    width:100%;
+    padding:10px;
+    border:none;
+    display: block;
+}
+a.btn{
+    border:1px solid blue;
+    padding-left:0px;
+    padding-right:0px;
+}
 @media only screen and (max-width:1000px){
     div.content{
         grid-template-columns: repeat(2,1fr);
@@ -41,7 +69,6 @@ div.container:hover div.links{
     div.content{
         display: block;
         width:100%;
-        margin:0px;
         padding:0px;
     }
     div.media{

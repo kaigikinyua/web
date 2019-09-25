@@ -8,6 +8,7 @@ class DB:
             m=Messages('error','Error While Connecting To Database')
     def addFile(self,path,filename,videotype):
         sql="INSERT INTO sharedfiles (path,filename,filetype) VALUES('"+path+"','"+filename+"','"+videotype+"');"
+        print(sql)
         c=self.db.cursor()
         c.execute(sql)
         self.db.commit()

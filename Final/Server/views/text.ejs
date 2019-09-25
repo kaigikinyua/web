@@ -10,27 +10,22 @@
 </head>
 <body>
     <div class="sidebarner"></div>
-    <div class="topbarner">
-        <ul class="topnav">
-            <a href="/videos"><li><img class="small" src="/static/Icons/video.png"></li></a>
-            <a href="/audio"><li><img class="small" src="/static/Icons/audio.png"></li></a>
-            <a href="/documents"><li><img class="small" src="/static/Icons/documents.png"></li></a>
-            <a href="/text"><li><img class="small" src="/static/Icons/text.png"></li></a>
-            <a href="/compressed"><li><img class="small" src="/static/Icons/pen.png"></li></a>
-        </ul>
-    </div>
+    <% include templates/header.ejs %>
     <div class="content" style="color:white;">
         <% for(var i=0;i < text.length;i++){%>
-            <a href="/readFile/<%= text[i].path%>">
-            <div class="container">
-                <div class="media">
-                        <center><span><%= text[i].filename %></span></center><br/>
-                        <center><a href="#"><img class="small" src="/static/Icons/download.png"></a></center>
+                <div class="container">
+                    <div class="file">
+                        <center><span><h3><%= text[i].filename %></h3></span></center><br/>
+                        <div class="fileActions">
+                            <img class="pic" src="/static/Icons/text.png">
+                            <form method="POST" action="readFile">
+                                <input type="hidden" name="filepath" value="<%=text[i].path%>"/>
+                                <input class="btn" type="submit" value="ReadFile"/><br/>
+                                <center><a href="/media/<%=text[i].path%>" class="btn" download><img class="small" src="/static/Icons/download.png"></a></center>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <div class="links">
-                </div>
-            </div>
-            </a>
         <% } %>
     </div>
 </body>

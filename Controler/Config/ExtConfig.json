@@ -14,12 +14,18 @@
 		{"ext":"php"},
 		{"ext":"js"},
 		{"ext":"html"},
-		{"ext":"css"}
+		{"ext":"css"},
+		{"ext":"rar"}
 	],
 	"pictures":[
 		{"ext":"jpeg"},
 		{"ext":"jpg"},
 		{"ext":"png"}
 	],
-	"others":[]
+	"others":[],
+	"compressed":[
+		{"ext":"rar"},
+		{"ext":"iso"},
+		{"ext":"zip"}
+	]
 }

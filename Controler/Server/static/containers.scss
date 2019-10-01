@@ -6,9 +6,6 @@ $dark:black;
     padding:0px;
     margin:0px;
 }
-body{
-    background:$primary;
-}
 div.navbar{
     position:fixed;
     z-index: 10;
@@ -64,8 +61,15 @@ video{
 div.documents{
     display:none;
 }
+img.fileIcon{
+    height:40px;
+    width:40px;
+}
 div.pictures{
     display:none;
+}
+div.documents div.item{
+    display: flex;
 }
 @media only screen and(max-width:600px){
     div.container{

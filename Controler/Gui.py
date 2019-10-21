@@ -51,7 +51,7 @@ class Gui():
 		#get shared Items and add them
 		d=DB()
 		items=d.showAllFiles()
-		j=0;
+		j=0
 		array=["videos","pictures","others"]
 		for item in array:
 			for file in items:								

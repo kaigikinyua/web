@@ -4,7 +4,7 @@ const fs=require('fs');
 const app=express();
 
 const sqlite3=require('sqlite3').verbose();
-const db=new sqlite3.Database(path.join(__dirname,'../AppData/share.db'));
+const db=new sqlite3.Database(__dirname+'/share.db',(err)=>{if (err){console.log("Error Connecting to "+__dirname+"share.db")}else{ console.log("Connecting ")}});
 app.set('template engine','ejs');
 app.use('/static',express.static(path.join(__dirname,'static')));
 app.use('/db',express.static('/'))

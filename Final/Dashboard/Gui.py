@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import filedialog
+import threading
 from Files import *
 from DB import *
 from Messages import *
@@ -7,7 +8,6 @@ from network import *
 import os
 class Gui:
     def __init__(self):
-        self.server=False
 
         self.root=Tk()
         i=Network()
@@ -50,18 +50,15 @@ class Gui:
     
 
     def runserver(self):
-		#change directoy to Server
-        if self.server==False:
-            self.server=True
-            print("Server procees {}".format(os.getpid()))
-    #set it to the executeable path when packaging
-            os.chdir('../Server')
-            serverCommand="nodemon index.js"
-            error=os.system(serverCommand)
-            if(error):
-            	print("failed")
-        else:
-            print("Server Already Running")
+        t1=threading.Thread(target=self.server,name="serverthread",args=())
+        t1.start()
+
+    def server(self):
+        os.chdir('../Server')
+        serverCommand="nodemon index.js"
+        error=os.system(serverCommand)
+        if error:
+            print("Error "+error)
 
     def addFile(self):
     	newfilepath=filedialog.askopenfilename()

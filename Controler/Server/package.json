@@ -1,17 +1,22 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
   "main": "mainserver.js",
   "dependencies": {
-    "express": "^4.17.0",
     "body-parser": "^1.19.0",
-    "ejs": "^2.6.1"
+    "ejs": "^2.6.1",
+    "express": "^4.17.1",
+    "path": "^0.12.7",
+    "sqlite3": "^4.1.0"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "pkg":{
+    "assets":["AppData/**","static/**","templates/**/**"]
+  },
   "author": "antony",
-  "license": "ISC"
+  "license": "MIT",
+  "description": ""
 }

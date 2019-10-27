@@ -1,13 +1,14 @@
 const express=require('express');
 const path=require('path');
 const fs=require('fs');
+const s=require('sqlite3');
 const app=express();
 
 const sqlite3=require('sqlite3').verbose();
-const db=new sqlite3.Database(__dirname+'/share.db',(err)=>{if (err){console.log("Error Connecting to "+__dirname+"share.db")}else{ console.log("Connecting ")}});
+const db=new sqlite3.Database('./AppData./share.db',(err)=>{if (err){console.log("Error Connecting to the "+__dirname+"/AppData/share.db\n"+err+"/n"+__dirname)}else{ console.log("Connecting ")}});
 app.set('template engine','ejs');
-app.use('/static',express.static(path.join(__dirname,'static')));
-app.use('/db',express.static('/'))
+app.use('/static',express.static('./static'));
+app.use('/db',express.static('G:/'))
 
 //index
 app.get('/',function(req,res){
@@ -52,6 +53,14 @@ app.get('/documents/view/:filename',function(req,res){
 	filedata.pipe(res)
 });
 
+//serving files in windows
+
+app.get('/db/:filename',function(req,res){
+	res.writeHead(200,{'Content-Type':'text/plain'});
+	console.log("serving file"+req.params.filename)
+	filedata=fs.createReadStream(req.params.filename,'utf8');
+	filedata.pipe(res)
+});
 //test
 app.get('/database',function(req,res){
 	var files=db.all("SELECT * FROM sharedfiles",[],function(err,rows){

@@ -48,7 +48,11 @@ module.exports = function(app){
         filepath=req.body.filepath
         res.sendFile(filepath)
     })
-    app.get('/upload',(req,res)=>{
-        res.render('upload')
+    app.get('/getAllFileData',(req,res)=>{
+        var myjson={
+            "Videos":[{"name":"Video One"},{"name":"Video Two"}],
+            "Documents":[{"name":"Doc One"},{"name":"Doc Two"}]
+        }
+        res.end(JSON.stringify(myjson))
     });
 }

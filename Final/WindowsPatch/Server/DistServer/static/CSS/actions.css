@@ -1,0 +1,23 @@
+a {
+  text-decoration: none;
+}
+
+ul.topnav {
+  list-style: none;
+}
+
+li {
+  background: white;
+  display: inline;
+  padding: 10px;
+  border-radius: 50%;
+  text-align: center;
+  margin: 0px 10px;
+}
+
+.small {
+  height: 20px;
+  width: 20px;
+  vertical-align: middle;
+}
+/*# sourceMappingURL=actions.css.map */

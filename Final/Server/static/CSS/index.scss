@@ -7,10 +7,11 @@ $fontDark:#1e90ff;
     margin:0px;
 }
 body{
-    background-image: url('/static/BG/bg.jpg');
+    //background-image: url('/static/BG/bg.jpg');
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
+    overflow-x: hidden;
 }
 div.topbarner{
     position:fixed;
@@ -21,9 +22,21 @@ div.topbarner{
     text-align: center;
     background: $pColor;
     color:$fontLight;
-    box-shadow: 5px 5px 5px 10px $pDark;
     z-index:10;
-    font-family:cursive; 
+    font-family:Arial, Helvetica, sans-serif;
+    display: grid;
+    grid-template-columns: repeat(2,1fr); 
+}
+div.topbarner a{
+    text-decoration: none;
+    margin:0px 10px;
+}
+div.topbarner a button{
+    padding:10px;
+    border:none;
+    background:none;
+    color:white;
+    border-bottom:1px solid white;
 }
 div.topbarner i{
     font-family:'Times New Roman', Times, serif;
@@ -59,60 +72,110 @@ div.contacts{
 }
 div.maincontent{
     z-index: 8;
-    margin-top: 100px;
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    max-width: 900px;
+    margin-top: 80px;
     position: relative;
     left:50%;
     transform: translateX(-50%);
+    max-width: 1500px;
 }
 div.module{
     position: relative;
     left:50%;
     transform: translateX(-50%);
     padding:0px;
-    background: whitesmoke;
-    color:$pDark;
+    color: lighten($pColor,20%);
+    background:white;
+    background-size: cover;
     border-radius: 10px;
-    max-width:400px;
-    min-height: 150px;
+    max-width:300px;
+    min-height: 200px;
     margin:20px 0px;
     overflow: hidden;
     transition: 0.7s;
+    box-shadow: 10px 1px 10px 1px rgba(50,50,50,2);
 }
 div.module h3{
-    font-family: cursive;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
     position: relative;
     vertical-align: middle;
     text-align: center;
-}
-div.module:hover{
-    background: none;
-    color:white;
 }
 img.icon{
     height:40px;
     width:40px;
 }
 div.bottom{
-    position: relative;
-    top:50px;
+    position: absolute;
+    margin-bottom: 0px;
+    text-align: center;
     width:100%;
-    height: 120px;
-    background-position: center;
-    background-size: cover;
+    padding:10px;
+    bottom:0px;
+    background:white;
 }
-@media only screen and (max-width:600px){
+@media only screen and(max-width:2000px){
     div.maincontent{
-        display:block;
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
     }
     div.module{
-        width:90%;
-        margin-right:0px;
-        position: relative;
-        left:50%;
-        transform: translateX(-50%);
+        min-height: 250px;
+        max-width: 350px;
+    }
+}
+@media only screen and(max-width:1000px){
+    div.module{
+        min-height: 200px;
+        max-width: 300px;
+    }
+}
+@media only screen and(max-width:800px){
+    div.module{
+        min-height: 200px;
+        max-width: 300px;
+    }
+    div.maincontent{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+@media only screen and (max-width:700px){
+    div.module{
+        box-shadow: none;
+        margin:0px;
+        border-radius:0px;
+        border:0px;
+        max-height:200px;
+        max-width: 280px;
+        background-position: center;
+    }
+    div.module div.bottom h3{
+        font-size: 20px;
+    }
+    div.maincontent :nth-child(2) div.bottom{
+        background:$pColor;
+        color:white;
+    }
+    div.maincontent :nth-child(3) div.bottom{
+        background:$pColor;
+        color:white;
+    }
+    div.maincontent :nth-child(6) div.bottom{
+        background:$pColor;
+        color:white;
+    }
+}
+@media only screen and (max-width:500px){
+    div.mainacontent{
+        display: block;
+    }
+    div.module{
+        box-shadow: none;
+        margin:0px;
+        border-radius:0px;
+    }
+    div.mainacontent:nth-child() div.maincontent div.bottom{
+
     }
 }

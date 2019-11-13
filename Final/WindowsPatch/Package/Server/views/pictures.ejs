@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Audio</title>
+    <link rel="stylesheet" href="/static/CSS/index.css"/>
+    <link rel="stylesheet" href="/static/CSS/actions.css"/>
+    <link rel="stylesheet" href="/static/CSS/media.css"/>
+</head>
+<body>
+    <div class="sidebarner"></div>
+    <% include templates/header.ejs %>
+    <div class="content" style="color:white;">
+        <% for(var i=0;i < pictures.length;i++){%>
+            <div class="container">
+                <div class="media">
+                    <img class="media" src="/media/<%=pictures[i].path%>" >
+                </div>
+                <div class="links">
+                    <center><span><%= pictures[i].filename %></span></center><br/>
+                    <center><a href="/media/<%=pictures[i].path %>" download><img class="small" src="/static/Icons/download.png"></a></center>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>

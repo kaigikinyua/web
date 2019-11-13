@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Share</title>
+    <link rel="stylesheet" href="/static/CSS/index.css"/>
+    <style>
+        #videos{
+            display: grid;
+            grid-template-rows: repeat(5,1fr);
+        }
+        #audio{
+            display: none;
+        }
+        #documents{
+            display: none;
+        }
+        #compressed{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="topbarner">
+        <h2>Web<i>Share</i></h2>
+    </div>
+    <div class="maincontent">
+        <a href="/videos">
+            <div class="module" >
+                <img class="icon" src="/static/Icons/video.png"/>
+                <h3>Videos</h3>
+                <div class="bottom" style="background-image: url('/static/BG/video.png')"></div>
+            </div>
+        </a>
+        <a href="/audio">
+            <div class="module">
+                <img class="icon" src="/static/Icons/audio.png"/>
+                <h3>Audio</h3>
+                <div class="bottom" style="background-image: url('/static/BG/audio.png')"></div>
+            </div>
+        </a>
+        <a href="/documents">
+            <div class="module">
+                <img class="icon" src="/static/Icons/documents.png"/>
+                <h3>Documents</h3>
+                <div class="bottom" style="background-image: url('/static/BG/document.jpg')"></div>
+            </div>
+        </a>
+        <a href="/text">
+            <div class="module">
+                <img class="icon" src="/static/Icons/text.png"/>
+                <h3>Text</h3>
+                <div class="bottom" style="background-image: url('/static/BG/text.jpg')"></div>
+            </div>
+        </a>
+        <a href="/compressed">
+            <div class="module">
+                <h3>Folders</h3>
+                <div class="bottom" style="background-image: url('/static/BG/folder.png')"></div>
+            </div>
+        </a>
+        <a href="/pictures">
+            <div class="module">
+                <h3>Pictures</h3>
+                <div class="bottom" style="background-image: url('/static/BG/picture.jpg')"></div>
+            </div>
+        </a>
+    </div>
+    <div class="contacts">
+        <div class="card">
+            <h3>Contacts</h3>
+            <ul class="contacts">
+                <li>twitter: </li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

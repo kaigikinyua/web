@@ -6,12 +6,12 @@ ul.topnav {
   list-style: none;
 }
 
-li {
+ul.topnav li {
   background: white;
   display: inline;
-  padding: 10px;
-  border-radius: 50%;
   text-align: center;
+  padding: 10px;
+  border-radius: 100%;
   margin: 0px 10px;
 }
 
